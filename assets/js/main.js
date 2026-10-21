@@ -5,11 +5,118 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
+    initHeroSlideshow();
     initSlideshow();
     initLightbox();
     initSmoothScroll();
     initChatbot();
 });
+
+/* ============================================================
+   HERO BANNER SLIDESHOW (3 SLIDES OTOMATIS)
+   ============================================================ */
+function initHeroSlideshow() {
+    const slider = document.getElementById('heroSlider') || document.querySelector('.hero-slideshow-banner');
+    if (!slider) return;
+
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.getElementById('heroPrevBtn');
+    const nextBtn = document.getElementById('heroNextBtn');
+
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    let timer = null;
+    const intervalTime = 5000;
+
+    function goToSlide(index) {
+        slides[currentIndex].classList.remove('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
+
+        currentIndex = (index + slides.length) % slides.length;
+
+        slides[currentIndex].classList.add('active');
+        if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    function startAutoSlide() {
+        stopAutoSlide();
+        timer = setInterval(nextSlide, intervalTime);
+    }
+
+    function stopAutoSlide() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    // Button controls
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            nextSlide();
+            startAutoSlide();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            prevSlide();
+            startAutoSlide();
+        });
+    }
+
+    // Dot controls
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToSlide(idx);
+            startAutoSlide();
+        });
+    });
+
+    // Pause on hover
+    slider.addEventListener('mouseenter', stopAutoSlide);
+    slider.addEventListener('mouseleave', startAutoSlide);
+
+    // Mobile touch swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoSlide();
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoSlide();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const threshold = 40;
+        if (touchEndX < touchStartX - threshold) {
+            nextSlide();
+        } else if (touchEndX > touchStartX + threshold) {
+            prevSlide();
+        }
+    }
+
+    // Start auto slide
+    startAutoSlide();
+}
 
 /* ============================================================
    NAVBAR & MOBILE MENU

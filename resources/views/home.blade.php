@@ -17,51 +17,166 @@
     $waDryerUrl = 'https://wa.me/' . $cleanWa . '?text=' . urlencode('Halo IKKY LAUNDRYIN COIN, saya ingin tanya info layanan Mesin Pengering (Dryer).');
 @endphp
 
-{{-- ===== HERO SECTION ===== --}}
-<section class="hero" id="beranda">
+{{-- ===== HERO BANNER SLIDESHOW (3 SLIDES OTOMATIS) ===== --}}
+<section class="hero hero-slideshow-banner" id="beranda">
     <div class="hero-bg-overlay"></div>
-    <div class="container hero-content">
-        <div class="hero-text">
-            <div class="hero-badge">
-                <i class="fas fa-coins"></i>
-                <span>{{ $profile->price_info ?? 'Mulai dari Rp5.000 per kali cuci' }}</span>
-            </div>
-            <h1 class="hero-title">
-                Laundry Praktis,<br>
-                <span class="text-highlight">Bersih,</span> Tanpa Ribet!
-            </h1>
-            <p class="hero-desc">
-                {{ $profile->description ?? 'Solusi laundry mandiri yang praktis untuk membantu aktivitas harianmu. Cukup gunakan koin, pilih mesin, dan nikmati kemudahan mencuci serta mengeringkan pakaian dengan cepat, nyaman, dan higienis.' }}
-            </p>
-            <div class="hero-tagline">
-                <i class="fas fa-quote-left"></i>
-                {{ $profile->sub_tagline ?? 'Tinggal Masukkan Koin, Langsung Jalan!' }}
-                <i class="fas fa-quote-right"></i>
-            </div>
-            <div class="hero-actions">
-                <a href="{{ $waHeroUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-hero">
-                    <i class="fab fa-whatsapp"></i> Chat WhatsApp / Order
-                </a>
-                <a href="#layanan" class="btn btn-outline">
-                    <i class="fas fa-th-large"></i> Jelajahi Layanan
-                </a>
-                <a href="#pemilik" class="btn btn-ghost">
-                    <i class="fas fa-user-circle"></i> Profil Pemilik
-                </a>
+
+    {{-- Slider Wrapper --}}
+    <div class="hero-slider" id="heroSlider">
+        {{-- SLIDE 1: CUCI MANDIRI KOIN --}}
+        <div class="hero-slide active" data-slide="0">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-coins"></i>
+                        <span>{{ $profile->price_info ?? 'Mulai dari Rp5.000 per kali cuci' }}</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Laundry Praktis,<br>
+                        <span class="text-highlight">Bersih,</span> Tanpa Ribet!
+                    </h1>
+                    <p class="hero-desc">
+                        {{ $profile->description ?? 'Solusi laundry mandiri yang praktis untuk membantu aktivitas harianmu. Cukup gunakan koin, pilih mesin, dan nikmati kemudahan mencuci serta mengeringkan pakaian dengan cepat, nyaman, dan higienis.' }}
+                    </p>
+                    <div class="hero-tagline">
+                        <i class="fas fa-quote-left"></i>
+                        {{ $profile->sub_tagline ?? 'Tinggal Masukkan Koin, Langsung Jalan!' }}
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="{{ $waHeroUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-hero">
+                            <i class="fab fa-whatsapp"></i> Chat WhatsApp / Order
+                        </a>
+                        <a href="#layanan" class="btn btn-outline">
+                            <i class="fas fa-th-large"></i> Jelajahi Layanan
+                        </a>
+                        <a href="#pemilik" class="btn btn-ghost">
+                            <i class="fas fa-user-circle"></i> Profil Pemilik
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-card">
+                        <img src="{{ asset('assets/images/hero/hero-laundry.jpg') }}" alt="Interior IKKY LAUNDRYIN COIN" class="hero-img" onerror="this.src='{{ asset('assets/images/placeholder-laundry.svg') }}'">
+                        <div class="hero-float-badge badge-top">
+                            <i class="fas fa-check-circle"></i> 1 Mesin Khusus Sendiri
+                        </div>
+                        <div class="hero-float-badge badge-bottom">
+                            <i class="fas fa-bolt"></i> Cepat &amp; Kering 100%
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="hero-image-card">
-                <img src="{{ asset('assets/images/hero/hero-laundry.jpg') }}" alt="Interior IKKY LAUNDRYIN COIN" class="hero-img" onerror="this.src='{{ asset('assets/images/placeholder-laundry.svg') }}'">
-                <div class="hero-float-badge badge-top">
-                    <i class="fas fa-check-circle"></i> 1 Mesin Khusus Sendiri
+
+        {{-- SLIDE 2: MESIN PENGERING CEPAT (MUSIM HUJAN) --}}
+        <div class="hero-slide" data-slide="1">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge badge-dryer">
+                        <i class="fas fa-wind"></i>
+                        <span>Mesin Pengering Komersial • 30-45 Menit Siap Lipat</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Musim Hujan?<br>
+                        <span class="text-highlight">Kering 100%</span> Tanpa Jemur!
+                    </h1>
+                    <p class="hero-desc">
+                        Gak perlu khawatir pakaian bau apek atau jemuran kehujanan! Mesin dryer komersial bersuhu panas higienis kami membunuh bakteri dan tungau, pakaian hangat, harum, dan langsung siap dipakai.
+                    </p>
+                    <div class="hero-tagline">
+                        <i class="fas fa-quote-left"></i>
+                        Pakaian Kering Maksimal, Higienis &amp; Bebas Repot!
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#layanan" class="btn btn-yellow">
+                            <i class="fas fa-fire-alt"></i> Lihat Mesin Dryer
+                        </a>
+                        <a href="#cara-kerja" class="btn btn-outline">
+                            <i class="fas fa-play-circle"></i> Panduan Pakai Mesin
+                        </a>
+                        <a href="{{ $waHeroUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-hero">
+                            <i class="fab fa-whatsapp"></i> Tanya CS WhatsApp
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-float-badge badge-bottom">
-                    <i class="fas fa-bolt"></i> Cepat &amp; Kering 100%
+                <div class="hero-visual">
+                    <div class="hero-image-card">
+                        <img src="{{ asset('assets/images/slideshow/slide-3-dryer.jpg') }}" alt="Mesin Pengering Cepat IKKY LAUNDRYIN COIN" class="hero-img" onerror="this.src='{{ asset('assets/images/placeholder-laundry.svg') }}'">
+                        <div class="hero-float-badge badge-top">
+                            <i class="fas fa-temperature-high"></i> Suhu Panas Higienis
+                        </div>
+                        <div class="hero-float-badge badge-bottom">
+                            <i class="fas fa-clock"></i> 30 Menit Kering Tuntas
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- SLIDE 3: HIGIENIS & RUANG TUNGGU NYAMAN --}}
+        <div class="hero-slide" data-slide="2">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge badge-comfort">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>1 Mesin 1 Pelanggan • Privasi &amp; Higienis Terjamin</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Higienis Maksimal,<br>
+                        <span class="text-highlight">Tidak Dicampur</span> Orang Lain!
+                    </h1>
+                    <p class="hero-desc">
+                        Mencuci lebih tenang karena pakaian Anda tidak pernah dicampur cucian orang lain. Ruang tunggu bersih, sejuk, dan dilengkapi suasana nyaman agar Anda santai sambil menunggu cucian selesai.
+                    </p>
+                    <div class="hero-tagline">
+                        <i class="fas fa-quote-left"></i>
+                        Kenyamanan, Kebersihan &amp; Kepuasan Anda Adalah Prioritas Kami!
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="#pemilik" class="btn btn-white">
+                            <i class="fas fa-heart"></i> Kenali Pemilik &amp; Tim
+                        </a>
+                        <a href="#kontak" class="btn btn-outline">
+                            <i class="fas fa-map-marker-alt"></i> Cek Lokasi Outlet
+                        </a>
+                        <a href="{{ $waHeroUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-hero">
+                            <i class="fab fa-whatsapp"></i> Chat Pemilik
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image-card">
+                        <img src="{{ asset('assets/images/hero/about-facility.jpg') }}" alt="Fasilitas Ruang Tunggu Nyaman" class="hero-img" onerror="this.src='{{ asset('assets/images/placeholder-laundry.svg') }}'">
+                        <div class="hero-float-badge badge-top">
+                            <i class="fas fa-couch"></i> Ruang Tunggu Bersih
+                        </div>
+                        <div class="hero-float-badge badge-bottom">
+                            <i class="fas fa-spray-can"></i> Mesin Rutin Steril
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{-- Tombol Navigasi Kiri & Kanan --}}
+    <button class="hero-nav-btn hero-prev" id="heroPrevBtn" aria-label="Slide sebelumnya">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="hero-nav-btn hero-next" id="heroNextBtn" aria-label="Slide berikutnya">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+    {{-- Indikator Titik (Dots) --}}
+    <div class="hero-dots" id="heroDots">
+        <button class="hero-dot active" data-index="0" aria-label="Slide 1"></button>
+        <button class="hero-dot" data-index="1" aria-label="Slide 2"></button>
+        <button class="hero-dot" data-index="2" aria-label="Slide 3"></button>
+    </div>
+
     <div class="hero-wave">
         <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#F5F7FA"/></svg>
     </div>
