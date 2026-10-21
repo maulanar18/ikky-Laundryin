@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 70" width="340" height="70">
+  <defs>
+    <linearGradient id="primaryGradWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#168DE2" />
+      <stop offset="100%" stop-color="#0E5AAB" />
+    </linearGradient>
+    <linearGradient id="coinGradWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE169" />
+      <stop offset="100%" stop-color="#FFB800" />
+    </linearGradient>
+  </defs>
+
+  <!-- Logo Mark -->
+  <g transform="translate(6, 5)">
+    <!-- Washing Machine Body -->
+    <rect x="0" y="0" width="58" height="60" rx="14" fill="url(#primaryGradWhite)" />
+    
+    <!-- Top display slot -->
+    <rect x="10" y="8" width="18" height="4" rx="2" fill="#FFFFFF" opacity="0.9" />
+    <circle cx="36" cy="10" r="2.5" fill="#FFD83D" />
+    <circle cx="45" cy="10" r="2.5" fill="#FFFFFF" opacity="0.9" />
+    
+    <!-- Machine Door Outer -->
+    <circle cx="29" cy="36" r="18" fill="#FFFFFF" opacity="0.25" />
+    <circle cx="29" cy="36" r="14" fill="#073B78" />
+    
+    <!-- Water and Bubble Inside Door -->
+    <path d="M17 38 Q23 34 29 38 T41 38 A12 12 0 0 1 17 38 Z" fill="#168DE2" />
+    <circle cx="26" cy="30" r="2" fill="#FFFFFF" opacity="0.9" />
+    <circle cx="33" cy="27" r="1.5" fill="#FFFFFF" opacity="0.7" />
+
+    <!-- Coin Icon Floating on top-right -->
+    <circle cx="48" cy="14" r="10" fill="url(#coinGradWhite)" stroke="#FFFFFF" stroke-width="2" />
+    <text x="48" y="18" font-family="'Poppins', 'Inter', sans-serif" font-size="10" font-weight="900" fill="#073B78" text-anchor="middle">¢</text>
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(76, 20)">
+    <!-- IKKY -->
+    <text x="0" y="18" font-family="'Poppins', 'Inter', sans-serif" font-size="22" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">
+      IKKY <tspan fill="#168DE2">LAUNDRYIN</tspan>
+    </text>
+    
+    <!-- COIN Tag Badge -->
+    <g transform="translate(0, 26)">
+      <rect x="0" y="0" width="52" height="18" rx="4" fill="#FFD83D" />
+      <text x="26" y="13" font-family="'Poppins', 'Inter', sans-serif" font-size="10" font-weight="800" fill="#073B78" letter-spacing="1.5" text-anchor="middle">COIN</text>
+      
+      <!-- Tagline Mini -->
+      <text x="60" y="13" font-family="'Inter', sans-serif" font-size="10.5" font-weight="500" fill="#E2E8F0" letter-spacing="0.2">
+        Self-Service Coin Laundromat
+      </text>
+    </g>
+  </g>
+</svg>
